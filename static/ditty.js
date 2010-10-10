@@ -1,6 +1,17 @@
 // base on http://github.com/namelessjon/ditty
 
 jQuery(function($) {
+
+var tmpl;
+
+$.ajax({
+    url: 'static/ditty.tmpl',
+    success: function (s) {
+        tmpl = $.tmpl(s);
+    },
+    async: false
+});
+
   // let tiddlers be closed
   $("div.ditty a[rel='close']").live('click',
     function() {
@@ -146,5 +157,25 @@ jQuery(function($) {
       return false;
     }
   );
+
+
+var converter = new Showdown.converter();
+
+var editform = $('<form onsubmit="return false;">' +
+    '<input type="text" name="ditty_title" size="60" value=""> <br>' +
+    '<textarea name="ditty_body" cols="60" rows="10"></textarea>' +
+    '</form>');
+
+var r = $('#ditties');
+
+// load default ditty
+$.getJSON('/view/t/recent', function (d) {
+    $.each(d, function (_, data) {
+        var ditt = $(tmpl(data));
+        ditt.find('> .body').html(converter.makeHtml(data.body));
+        r.append(ditt);
+        ditt = null;
+    });
+});
 
 }); // close ready block
