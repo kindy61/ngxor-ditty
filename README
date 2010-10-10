@@ -1,0 +1,6 @@
+
+基于 nginx openresty 构建一个 tiddlywiki
+
+数据存放到 server 端的 mysql 中，
+通过 nginx 及其一系列扩展，来实现各种数据存取操作
+
