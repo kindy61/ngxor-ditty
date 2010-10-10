@@ -38,8 +38,9 @@ CREATE TABLE `tidd` (
   `public` int(1) NOT NULL DEFAULT '1',
   `uid` int(14) NOT NULL,
   `body` text,
+  `refid` int(14) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,4 +70,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-10  5:15:27
+-- Dump completed on 2010-10-10 19:31:18
